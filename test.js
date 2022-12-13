@@ -1,11 +1,12 @@
-const {Customer,sequelize} = require('./models')
+const {users,sequelize} = require('./models')
 let main = async() =>{
     try {
-
-        await sequelize.authenticate()
-        let cus = await Customer.findAll()
+        await users.sync({ alter: true })
+        let cus = await users.findAll()
         console.log("custoner: ",cus);
     } catch (error) {
        console.log(error); 
     }
 }
+
+main()
